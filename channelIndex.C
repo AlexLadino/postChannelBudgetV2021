@@ -28,28 +28,21 @@ License
 #include "syncTools.H"
 #include "OFstream.H"
 #include "meshTools.H"
-#include "Time.T.H"
-#include "SortableList.T.H"
+#include "Time.H"
+#include "SortableList.H"
 
 // * * * * * * * * * * * * * Static Member Data  * * * * * * * * * * * * * * //
 
-namespace Foam
-{
-    template<>
-    const char* Foam::NamedEnum
-    <
-        Foam::vector::components,
-        3
-    >::names[] =
-    {
-        "x",
-        "y",
-        "z"
-    };
-}
-
-const Foam::NamedEnum<Foam::vector::components, 3>
-    Foam::channelIndex::vectorComponentsNames_;
+const Foam::Enum
+<
+    Foam::vector::components
+>
+Foam::channelIndex::vectorComponentsNames_
+({
+    { vector::components::X, "x" },
+    { vector::components::Y, "y" },
+    { vector::components::Z, "z" },
+});
 
 
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //
@@ -64,7 +57,7 @@ void Foam::channelIndex::walkOppositeFaces
 {
     const cellList& cells = mesh.cells();
     const faceList& faces = mesh.faces();
-    label nBnd = mesh.nFaces() - mesh.nInternalFaces();
+    const label nBnd = mesh.nBoundaryFaces();
 
     DynamicList<label> frontFaces(startFaces);
     forAll(frontFaces, i)
