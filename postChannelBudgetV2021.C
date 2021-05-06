@@ -84,15 +84,21 @@ int main(int argc, char *argv[])
         runTime.setTime(timeDirs[timeI], timeI);
         Info<< "Collapsing fields for time " << runTime.timeName() << endl;
 
+		Info<< "reading fields primitive \n";
         #include "readFieldsPrimitive.H"
+		Info<< "reading fields TKE Budget scalar \n";
         #include "readFieldsTKEBudgetScalar.H"
+		Info<< "reading fields TKE Budget tensor \n";
         #include "readFieldsTKEBudgetTensor.H"
+		Info<< "reading fields metrics \n";
         #include "readFieldsMetrics.H"
                              
         // Average fields over channel down to a line
+		Info<< "calculate fields \n";
         #include "calculateFields.H"
+		Info<< "collapsing fields \n";
         #include "collapse.H"
-        
+        Info<< "generating graphs \n";
         #include "makeGraphsAll.H"
     }
 
