@@ -1,8 +1,8 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
+   \\    /   O peration     |
+    \\  /    A nd           | Copyright (C) 2011-2016 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -33,23 +33,16 @@ License
 
 // * * * * * * * * * * * * * Static Member Data  * * * * * * * * * * * * * * //
 
-namespace Foam
-{
-    template<>
-    const char* Foam::NamedEnum
-    <
-        Foam::vector::components,
-        3
-    >::names[] =
-    {
-        "x",
-        "y",
-        "z"
-    };
-}
-
-const Foam::NamedEnum<Foam::vector::components, 3>
-    Foam::channelIndex::vectorComponentsNames_;
+const Foam::Enum
+<
+    Foam::vector::components
+>
+Foam::channelIndex::vectorComponentsNames_
+({
+    { vector::components::X, "x" },
+    { vector::components::Y, "y" },
+    { vector::components::Z, "z" },
+});
 
 
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //
@@ -64,7 +57,7 @@ void Foam::channelIndex::walkOppositeFaces
 {
     const cellList& cells = mesh.cells();
     const faceList& faces = mesh.faces();
-    label nBnd = mesh.nFaces() - mesh.nInternalFaces();
+    const label nBnd = mesh.nBoundaryFaces();
 
     DynamicList<label> frontFaces(startFaces);
     forAll(frontFaces, i)
