@@ -1,6 +1,6 @@
       
-      kolmogorovLengthScale = pow(pow(laminarTransport.nu(),3.0)/(dissipationTKEMean + eps2),0.25);
-      kolmogorovTimeScale = pow(laminarTransport.nu()/(dissipationTKEMean + eps2),0.5);
+      // kolmogorovLengthScale = pow(pow(laminarTransport.nu(),3.0)/(dissipationTKEMean + eps2),0.25);
+      // kolmogorovTimeScale = pow(laminarTransport.nu()/(dissipationTKEMean + eps2),0.5);
        
       
       

@@ -112,6 +112,6 @@ scalarField vorticityxrmsValues(sqrt(mag(vorticity2PrimeMeanxxValues)));
 scalarField vorticityyrmsValues(sqrt(mag(vorticity2PrimeMeanyyValues)));
 scalarField vorticityzrmsValues(sqrt(mag(vorticity2PrimeMeanzzValues)));
 
-scalarField kolmogorovLengthScaleValues(channelIndexing.collapse(kolmogorovLengthScale));
-scalarField kolmogorovTimeScaleValues(channelIndexing.collapse(kolmogorovTimeScale));
+// scalarField kolmogorovLengthScaleValues(channelIndexing.collapse(kolmogorovLengthScale));
+// scalarField kolmogorovTimeScaleValues(channelIndexing.collapse(kolmogorovTimeScale));
 
